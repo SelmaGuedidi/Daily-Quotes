@@ -47,6 +47,7 @@ jobs:
 
       - name: Commit changes
         run: |
+          git config --global user.name ${{ secrets.USERNAME }}
           git config user.email ${{ secrets.USERNAME }}
           git config user.password ${{ secrets.PASSWORD }}
           git add quotes.txt
