@@ -14,10 +14,15 @@ def analyze_sentiment(quote):
   nltk.download('vader_lexicon') 
   sia = SentimentIntensityAnalyzer()
   sentiment_score = sia.polarity_scores(quote)['compound']
-
   if sentiment_score > 0.05:
     return "positive"
   elif sentiment_score < -0.05:
     return "negative"
   else:
     return "neutral"
+
+if __name__ == "__main__":
+  import sys
+  quote = sys.stdin.read()
+  sentiment = analyze_sentiment(quote)
+  print(sentiment) 
