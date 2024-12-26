@@ -36,10 +36,11 @@ jobs:
       - name: Analyze sentiment
         run: |
           python sentiment_analysis.py < temp_quote.txt > sentiment.txt
+          echo sentiment.txt
 
       - name: Combine quote and sentiment
         run: |
-          paste temp_quote.txt sentiment.txt > temp_quote_with_sentiment.txt
+          echo "$(cat temp_quote.txt) $(python sentiment_analysis.py < temp_quote.txt)" > temp_quote_with_sentiment.txt 
 
       - name: Append to quotes.txt
         run: |
