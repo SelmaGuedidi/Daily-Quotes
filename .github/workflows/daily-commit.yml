@@ -2,7 +2,7 @@ name: Daily Commit with Sentiment Analysis
 
 on:
   schedule:
-    - cron: '50 20 * * *'
+    - cron: '52 19 * * *'
 
 jobs:
   commit-quote:
