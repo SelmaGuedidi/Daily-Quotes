@@ -1,8 +1,8 @@
-name: Daily Commit with Sentiment Analysis (Enhanced Duplicate Handling)
+name: Daily Commit with Sentiment Analysis 
 
 on:
   schedule:
-    - cron: '0 0 * * *' 
+    - cron: '50 20 * * *'
 
 jobs:
   commit-quote:
