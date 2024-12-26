@@ -1,0 +1,48 @@
+name: Daily Commit with Sentiment Analysis (Enhanced Duplicate Handling)
+
+on:
+  schedule:
+    - cron: '0 0 * * *' 
+
+jobs:
+  commit-quote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Get a new quote (initial attempt)
+        id: get_quote
+        run: |
+          curl -s "https://zenquotes.io/api/random" | jq -r '.q' > temp_quote.txt
+
+      - name: Loop until unique quote found
+        run: |
+          while grep -Fxq "$(cat temp_quote.txt)" quotes.txt; do
+            echo "Duplicate quote found. Fetching another."
+            curl -s "https://zenquotes.io/api/random" | jq -r '.q' > temp_quote.txt
+          done
+
+      - name: Analyze sentiment
+        run: |
+          python sentiment_analysis.py < temp_quote.txt > sentiment.txt
+
+      - name: Combine quote and sentiment
+        run: |
+          paste temp_quote.txt sentiment.txt > temp_quote_with_sentiment.txt
+
+      - name: Append to quotes.txt
+        run: |
+          cat temp_quote_with_sentiment.txt >> quotes.txt
+
+      - name: Commit changes
+        run: |
+          git config user.email ${{ secrets.USERNAME }}
+          git config user.password ${{ secrets.PASSWORD }}
+          git add quotes.txt
+          git commit -m "Added daily quote with sentiment for today"
+          git push origin main
+
+      - name: Cleanup
+        run: |
+          rm temp_quote.txt sentiment.txt temp_quote_with_sentiment.txt
