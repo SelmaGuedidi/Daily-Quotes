@@ -3,7 +3,8 @@ name: Daily Commit with Sentiment Analysis
 on:
   schedule:
     - cron: '30 20 * * *'
-
+  push:
+    branches: [ main ]
 jobs:
   commit-quote:
     runs-on: ubuntu-latest
@@ -23,7 +24,7 @@ jobs:
       - name: Get a new quote (initial attempt)
         id: get_quote
         run: |
-          curl -s "https://zenquotes.io/api/random" | jq -r '.q' > temp_quote.txt
+          curl -s "https://zenquotes.io/api/random" | jq -r '.[0].q' > temp_quote.txt 
 
       - name: Loop until unique quote found
         run: |
