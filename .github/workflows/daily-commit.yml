@@ -49,8 +49,7 @@ jobs:
       - name: Commit changes
         run: |
           git config --global user.name ${{ secrets.USERNAME }}
-          git config user.email ${{ secrets.USERNAME }}
-          git config user.password ${{ secrets.PASSWORD }}
+          git config --global user.password ${{ secrets.PASSWORD }}
           git add quotes.txt
           git commit -m "Added daily quote with sentiment for today"
           git push origin main
