@@ -123,3 +123,4 @@ All religions, arts and sciences are branches of the same tree.  neutral
 In the middle of chaos lies opportunity.   negative
 When you can't make them see the light, make them feel the heat. neutral
 Nothing important is learned; it is simply remembered. negative
+It is dangerous to be right in matters on which the established authorities are wrong. negative
