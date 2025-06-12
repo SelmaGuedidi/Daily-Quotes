@@ -169,3 +169,4 @@ Kindness is a language which the deaf can hear and the blind can see. positive
 Invisible things are the only realities. neutral
 All cruelty springs from weakness.   negative
 Definitions belong to the definers, not the defined. neutral
+Only I can change my life. No one can do it for me. negative
