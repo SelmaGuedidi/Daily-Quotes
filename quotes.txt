@@ -226,3 +226,4 @@ No matter how tall the mountain is, it cannot block the sun. positive
 Don't talk about what you have done or what you are going to do. neutral
 Whenever you do a thing, act as if all the world were watching. neutral
 Truth is the offspring of silence and meditation. positive
+One day, in retrospect, the years of struggle will strike you as the most beautiful. positive
